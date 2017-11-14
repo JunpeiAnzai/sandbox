@@ -1,3 +1,7 @@
+const env = process.env.NODE_ENV;
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -14,10 +18,10 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader']
+        })
       },
       {
         test: /\.tsx?$/,
@@ -26,5 +30,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: '../public/stylesheets/[name].css'
+    })
+  ]
 };
