@@ -15,6 +15,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: [
+          'ts-loader'
+        ]
+      },
+      {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -22,9 +28,16 @@ module.exports = {
         })
       },
       {
-        test: /\.tsx?$/,
+        test: /\.(png|jpg|gif)$/,
         use: [
-          'ts-loader'
+          {
+            loader: 'file-loader',
+            options: {
+              useRelativePath: true,
+              publicPath: '/assets/images/',
+              outputPath: '../public/images/'
+            }
+          }
         ]
       }
     ]
