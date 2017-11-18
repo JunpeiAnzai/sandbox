@@ -42,9 +42,6 @@ module.exports = {
       },
       {
         test: /\.(eot|otf|ttf|woff2?|svg)(\?.+)?$/,
-        include: [
-          path.resolve(__dirname, 'node_modules')
-        ],
         use: {
           loader: 'file-loader',
           options: {
