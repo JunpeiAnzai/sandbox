@@ -1,5 +1,5 @@
 [package]
-name = "dining_philosophers"
+name = "generic"
 version = "0.1.0"
 authors = ["Jumpei Anzai <junpei.anzai@gmail.com>"]
 
